@@ -5,7 +5,7 @@
 }
 body {
     font-family: 'Montserrat', sans-serif;
-    /*max-width: 1366px; */ /*bigger than 1366 - pics will crushe*/
+    max-width: 1366px; /*bigger than 1366 - pics will crush*/
 }
 header
 {
@@ -128,7 +128,7 @@ nav {
 .leftSideBox button:hover,
 .contentBox-2 .rightSideBox button:hover {
     letter-spacing: 1px;
-    box-shadow: 5px 40px -10px rgba(0,0,0,0.57);
+    box-shadow: 3px 3px 3px rgba(0,0,0,0.57);
     color: #000;
     transition: all 0.4s ease 0s;
     animation:bounceOut .8s linear;
@@ -189,7 +189,6 @@ nav {
     color: #fff;
     padding: 2%;
     cursor: pointer;
-    flex-wrap: nowrap;
 }
 footer {
     background: url(../assets/footerBG-middle.png) center center no-repeat;
@@ -240,11 +239,10 @@ footer {
     color: #fff;
     font-size: .7em;
 }
-
 @keyframes bounceOut {
-    0%{ box-shadow: 1px 0 0 1px #fff; opacity:2;}
-    25%{ box-shadow: 1px 0 0 2px #fff; opacity:2;}
-    50%{ box-shadow: 1px 0 0 3px #000; opacity:2; }
-    75%{ box-shadow: 1px 0 0 2px #fff; opacity:2;}
-    100%{ box-shadow: 1px 0 0 1px #fff; opacity:2;}
+    0%{ box-shadow: 1px 0 0 1px #fff; opacity:1;}
+    25%{ box-shadow: 1px 0 0 2px #fff; opacity:1;}
+    50%{ box-shadow: 1px 0 0 3px #000; opacity:1; }
+    75%{ box-shadow: 1px 0 0 2px #fff; opacity:1;}
+    100%{ box-shadow: 1px 0 0 1px #fff; opacity:1;}
 }
