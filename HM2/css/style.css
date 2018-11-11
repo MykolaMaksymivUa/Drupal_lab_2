@@ -5,15 +5,16 @@
 }
 body {
     font-family: 'Montserrat', sans-serif;
+    /*max-width: 1366px; */ /*bigger than 1366 - pics will crushe*/
 }
 header
 {
     background: url("../assets/HeaderBG-middlel.png") center center no-repeat;
-    width: 100%;
-
 }
 .container {
-    max-width: 1366px;
+    /*some changes to fix wrapper */
+    padding: 0;
+    margin: 0;
 }
 .topNavBar {
     padding-top:3%;
@@ -22,32 +23,36 @@ header
     margin-right: 13%;
     margin-left: 13%;
 }
-.topNavBar img {
-    width: 40%;
+.logoImg{
+    width: 4vw;
 }
 nav {
-    width: 30%;
+    width: 35vw;
 }
-.top-navigation {
+.top-navigation, 
+.bottom-navigation{
     display: flex;
     list-style-type: none;
     justify-content: space-between;
 }
-.top-navigation a {
+.top-navigation a,
+.bottom-navigation a{
     text-decoration: none;
-    font-size: 12pt;
+    font-size: 11pt;
     color: #fff;
     font-weight: bold;
 }
-.top-navigation a:hover {
+.top-navigation a:hover,
+.bottom-navigation a:hover{
     border-bottom: 2px solid #fff;
 }
-.top-navigation .activeIcon {
+.top-navigation .activeIcon,
+.bottom-navigation .activeIcon {
     color:rgb(24, 247, 239);
 }
 .brand {
-    margin-top: 8.5%;
-    margin-bottom: 8.5%;
+    margin-top: 10.5%;
+    margin-bottom: 10.5%;
     
 }
 .brand h1 {
@@ -76,50 +81,164 @@ nav {
 .contentBox-1 {
     display: flex;
 }
+.rightSideBox {
+    width: 66%;
+}
 .rightSideBox img {
     width: 100%;
-    height: 80%;
+    height: 100%;
 }
 .leftSideBox {
     width: 34%;
     background-color: rgb(24, 247, 239);
-    height: 484.53px;
+    height: 605.67px;
 }
 .leftSideBox h2 {
     font-weight: bold;
     color:white;
-    padding-top: 5%;
+    padding-top: 7%;
     line-height: 1em;
     font-size: 400%;
-    padding-left: 7.5%;
+    padding-left: 9.5%;
 }
 .leftSideBox p {
     margin-top: 3%;
     color: rgb(54, 36, 234);
-    padding-left: 5%;
-    padding-right: 5%;
+    padding-left: 9.5%;
+    padding-right: 9.5%;
     line-height: 1.8em;
+    font-size: 1.23vw;
 }
 .leftSideBox span {
     color:rgb(54, 36, 234);
 }
 .leftSideBox button {
-    margin-top: 5%;
-    margin-left: 5%;
+    margin-top: 8%;
+    margin-left: 9.5%;
     background-color: transparent;
     border: 2.5px solid #fff;
     height: 8%;
     font-weight: bold;
-    font-size: 1.05em;
+    text-transform: uppercase;
+    font-size: 1.3vw;
     color:rgb(54, 36, 234);
-    padding-left: 1%;
-    padding-right: 1%;
+    padding: 1.5%;
     cursor: pointer;
 }
-.leftSideBox button:hover {
-    cursor: pointer; 
-    animation:bounceOut .8s linear;
+.leftSideBox button:hover,
+.contentBox-2 .rightSideBox button:hover {
+    letter-spacing: 1px;
+    box-shadow: 5px 40px -10px rgba(0,0,0,0.57);
     color: #000;
+    transition: all 0.4s ease 0s;
+    animation:bounceOut .8s linear;
+}
+.leftSideBox button:active,
+.contentBox-2 .rightSideBox button:active {
+    transform: translateY(5px);
+}
+.contentBox-2 {
+    height: calc(605.67px * 0.6);
+    display: flex;
+    position: relative;
+}
+.contentBox-2 .leftSideBox{
+    width: 34%;
+    height: calc(605.67px * 0.6);
+    background-color: #fff;
+}
+.contentBox-2 .leftSideBox .imgBox img {
+    width: 100%;
+    height: 304px;
+}
+.contentBox-2 .leftSideBox .imgBox {
+    width: 31%;
+    position: absolute;
+    left:8%;
+    bottom: -4px;
+}
+.contentBox-2 .rightSideBox {
+    background-color: rgb(54, 36, 234);
+    width: 66%;
+    padding-left: 13%;
+    padding-right: 13%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+}
+.contentBox-2 .rightSideBox h2 {
+    font-size: 250%;
+    color: #fff;
+    font-weight: bold;
+    margin-bottom: 5%;
+}
+.contentBox-2 .rightSideBox p {
+    font-size: 1.23vw;
+    color: #fff;
+    line-height: 2em;
+}
+.contentBox-2 .rightSideBox button {
+    margin-top: 5%;
+    background-color: transparent;
+    border: 2.5px solid #fff;
+    font-size: 1.2vw;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #fff;
+    padding: 2%;
+    cursor: pointer;
+    flex-wrap: nowrap;
+}
+footer {
+    background: url(../assets/footerBG-middle.png) center center no-repeat;
+}
+.contentBox-3 {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 10%;
+    padding-bottom: 15%;
+    margin-left: 13vw;
+    margin-right: 13vw;
+}
+.contentBox-3 .headerBox ,
+.contentBox-3 .paragraphBox {
+    width: 34vw;
+}
+.headerBox h2 {
+    font-weight: bold;
+    color: #fff;
+    font-size: 3vw;
+    line-height: 1.3em;
+}
+.paragraphBox p {
+    color: #fff;
+    font-size: 1.3vw;
+    line-height: 1.8em;
+}
+.bottomNavBar {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 8%;
+    padding-top: 8%;
+}
+.corporateRules {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.corporateRules p {
+    width: 30vw;
+    color: #fff;
+    font-size: .8em;
+    padding-top: 3%;
+}
+.corporateRules a {
+    padding-top:.5%;
+    text-decoration: none;
+    color: #fff;
+    font-size: .7em;
 }
 
 @keyframes bounceOut {
