@@ -1,0 +1,56 @@
+$h2Color:rgba(42, 23, 212, 0.699);
+$mainColor: rgb(13, 173, 226);
+$borderColor: rgb(73, 119, 83);
+
+@mixin border($color) {
+    border-bottom: 2px solid $color;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    header {
+        color: $mainColor;
+        text-align: center;
+        h1 {
+            font-size: 4em;
+            font-style: italic;
+            margin-top: 50px;
+        }
+        h2 {
+            font-size: 6em;
+            text-align: center;
+            font-weight: bold;
+        }
+    }
+    main {
+        .searchBar {
+            margin-top: 30px;
+            margin-left: 10%;
+            margin-right: 10%;
+            display: flex;
+            justify-content: center;
+            padding-bottom: 50px;
+            @include border(#000);
+        }
+        .content {
+            padding: 9%;
+            h2 {
+                color: $h2Color;
+                padding-top: 10px;
+            }
+            .content-items {
+                @include border($borderColor);
+            }
+        }
+        a:hover {
+            text-decoration: none;
+        }
+        .errorBox {
+            display: none;
+            text-align: center;
+            color: rgb(231, 71, 71);
+            border: 2px solid #000;
+            margin: 8%;
+        }
+    }
+}
