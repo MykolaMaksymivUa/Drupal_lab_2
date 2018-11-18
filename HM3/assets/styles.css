@@ -1,0 +1,89 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family:sans-serif;
+}
+h1 {
+    text-align: center;
+    font-weight: normal;
+}
+header p {
+    display: none;
+    text-align: center;
+}
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.catBox {
+    width: 45%;
+    height: 500px;
+    margin-top: 5%;
+    padding: 1.5%;
+    border: 1.5px solid black;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+}
+.editNewEventBox {
+    display: none;
+    width: 100%;
+    justify-content: space-around;
+    align-items: flex-start;
+    margin-top: 10px;
+    height: 40px;
+}
+.addNewEventBox {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    align-items: flex-start;
+    height: 40px;
+    margin-top:10px;
+    border-bottom: 2px solid black;
+   
+}
+.addNewEvent,
+.editNewEvent {
+    width: 85%;
+    height: 24px;
+    border: 1.5px solid black;
+}
+button {
+    border: 0;
+    background: white;
+    padding: 0;
+    cursor: pointer;
+}
+
+.listBoxContainer {
+    height: 400px;
+    width: 100%;
+    padding-top:10px;
+    vertical-align: center;
+}
+.listBox-item {
+    list-style-type: none;
+    font-weight: bold;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+footer {
+   display: flex;
+   justify-content: center;
+}
+
+footer img {
+    width: 60px;
+    height: 60px;
+}
+.deleteIconBtn{
+    margin-left: auto;
+}
