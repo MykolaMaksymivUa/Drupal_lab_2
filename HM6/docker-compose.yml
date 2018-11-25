@@ -1,0 +1,55 @@
+version: "2"
+
+services:
+  mariadb:
+    image: wodby/mariadb
+    environment:
+      MYSQL_RANDOM_ROOT_PASSWORD: 1
+      MYSQL_DATABASE: drupal_lab
+      MYSQL_USER: drupal_lab
+      MYSQL_PASSWORD: drupal_lab
+    ports:
+      - "4306:3306"
+    restart: on-failure
+
+  php:
+    build:
+      context: .
+      dockerfile: docker/php-fpm/Dockerfile
+    environment:
+      PHP_HOST_NAME: localhost:9080
+      PHP_DOCROOT: src # Relative path inside the /var/www/html/ directory.
+      PHP_UPLOAD_MAX_FILESIZE: 1G
+    volumes:
+      - ./:/var/www/html:cached
+    restart: on-failure
+
+  nginx:
+    build:
+      context: .
+      dockerfile: docker/nginx/Dockerfile
+    environment:
+      NGINX_BACKEND_HOST: php
+      NGINX_STATIC_CONTENT_OPEN_FILE_CACHE: "off"
+      NGINX_SERVER_NAME: localhost
+      NGINX_UPSTREAM_NAME: php
+      NGINX_SERVER_ROOT: /var/www/html/src
+      NGINX_DOCROOT: src
+    volumes_from:
+      - php
+    ports:
+      - "9080:80"
+    restart: on-failure
+
+  pma:
+    image: phpmyadmin/phpmyadmin
+    environment:
+      PMA_HOST: mariadb
+      PMA_USER: drupal_lab
+      PMA_PASSWORD: drupal_lab
+      PHP_UPLOAD_MAX_FILESIZE: 1G
+      PHP_MAX_INPUT_VARS: 1G
+    ports:
+      - "9081:80"
+    restart: on-failure
+
