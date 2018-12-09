@@ -1,0 +1,17 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+.author-name {
+    color: #2d8048;
+    text-transform: uppercase;
+    margin: 0;
+}
+.author-name a {
+    text-decoration: none;
+}
+
+.author-name a:hover {
+    color: #4300ff;
+    box-shadow: 6px 10px 26px -5px rgba(0,0,0,0.62);
+}
