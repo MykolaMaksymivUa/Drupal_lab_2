@@ -25,10 +25,12 @@ function my_subtheme_library () {
  * Attaching library and js behavior to FAQ page.
  */
 function my_subtheme_preprocess_views_view(&$variables) {
-    $options_JS = [
-        'group' => JS_THEME,
-    ];
-
-    drupal_add_library('my_subtheme', 'ziehharmonika');
-    drupal_add_js(drupal_get_path('theme', 'my_subtheme') .'/js/behavior.js', $options_JS);
+	// Check if the view is faq page
+	if ($variables['name'] == 'faq') {
+		$options_JS = [
+			'group' => JS_THEME,
+		];
+		drupal_add_library('my_subtheme', 'ziehharmonika');
+		drupal_add_js(drupal_get_path('theme', 'my_subtheme') .'/js/behavior.js', $options_JS);
+	}
 }
