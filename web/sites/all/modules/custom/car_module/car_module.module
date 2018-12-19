@@ -1,0 +1,156 @@
+<?php
+
+/**
+ * @file
+ * This file contain a page Cars, where we can add/delete new entities.
+ */
+
+/*
+ * Implements hook_entity_info().
+ */
+function car_module_entity_info() {
+    return [
+        'car_module' => [
+            'label' => t('Car'),
+            'base table' => 'cars',
+            'entity keys' => [
+                'id' => 'cid',
+            ],
+            'module' => 'car_module',
+        ],
+    ];
+}
+/*
+ * Implements hook_menu().
+ */
+function car_module_menu () {
+    $items = [];
+    $items['cars'] = [
+        'title' => 'Cars Page',
+        'page callback' => 'drupal_get_form',
+        'menu_name' => 'main-menu',
+        'page arguments' => ['car_module_form'],
+        'access callback' => TRUE,
+    ];
+
+    $items['cars/table'] = [
+        'title' => 'Database',
+        'page callback' => 'table_show_callback',
+        'access callback' => TRUE,
+    ];
+
+    return $items;
+}
+/*
+ * Implements hook_form().
+ */
+function car_module_form ($form, &$formstate) {
+    $form['markup']['#markup'] = format_string(
+        '<h2>@markup</h2>',
+        ['@markup' => t('You can add a new car or delete existing')]
+    );
+
+    $form['add'] = [
+        '#type' => 'submit',
+        '#value' => t('Generate'),
+        '#submit' => ['car_module_form_add_submit'],
+    ];
+
+    $form['show'] = [
+        '#type' => 'submit',
+        '#value' => t('Show Table'),
+        '#submit' => ['car_module_form_show_submit'],
+    ];
+
+    $form['delete'] = [
+        '#type' => 'submit',
+        '#value' => t('Delete'),
+        '#submit' => ['car_module_form_delete_submit']
+    ];
+
+    return $form;
+
+}
+/*
+ * Button for generate new nodes
+ */
+function car_module_form_add_submit ($form, &$formstate) {
+
+    $query = db_insert('cars')
+        ->fields([
+        'name',
+        'power',
+        'year',
+        'price',
+    ]);
+    $CAR_NAME = [
+        'Audi A6',
+        'Audi A7',
+        'Audi RS',
+        'Audi Q3',
+        'Audi Q5',
+        'BMW M2',
+        'BMW M3',
+        'BMW M4',
+        'BMW Z4',
+        'Porsche 718 Cayman',
+        'Porsche 911',
+        'Porsche Boxter',
+        'Porsche Panamera',
+        ];
+    for ($i = 0; $i < 5; $i++ ) {
+        $query->values([
+            'name' => $CAR_NAME[mt_rand(0,12)],
+            'power' => mt_rand(200, 688),
+            'year' => mt_rand(2010, 2018),
+            'price' => mt_rand(25000, 100000),
+
+        ]);
+    }
+
+    $query ->execute();
+    drupal_set_message(t('Successful add 5 cars!'), 'status', FALSE);
+}
+/*
+ * Deleting nodes from the table.
+ */
+function car_module_form_delete_submit($form, &$form_state) {
+    $count = db_delete('cars')
+        ->execute();
+    if ($count) {
+        drupal_set_message(t('Successful delete all elements from the table!'),'status', FALSE);
+    } else {
+        drupal_set_message(t('Table are empty, nothing to delete!'), 'error', FALSE);
+    }
+}
+/*
+ * Button for redirect to page with tables.
+ */
+function car_module_form_show_submit($form, &$formstate) {
+    drupal_goto('cars/table');
+}
+/*
+ * Show page with table
+ */
+function table_show_callback() {
+
+    $query = db_select('cars', 'c');
+    $query->fields('c', ['name', 'power', 'year', 'price']);
+    $result = $query->execute();
+
+    $rows = [];
+    foreach ($result as $row) {
+        // normally I would add some nice formatting to rows
+        // but Iam simply going to add row to the array.
+        $rows[] = ['data' => (array) $row];
+    }
+
+    // build the table for the nice output.
+    $build['table_order'] = [
+        '#theme' => 'table',
+        '#header' => ['Name', 'Power', 'Year', 'Price'],
+        '#rows' => $rows,
+    ];
+
+    return $build;
+}

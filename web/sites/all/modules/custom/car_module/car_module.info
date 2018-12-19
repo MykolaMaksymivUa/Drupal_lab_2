@@ -1,0 +1,4 @@
+name = Car List
+description = This module will work with car entity.
+core = 7.x
+package = Custom

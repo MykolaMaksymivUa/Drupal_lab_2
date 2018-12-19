@@ -1,0 +1,52 @@
+<?php
+
+/**
+ * @file
+ * This file will create a new table Cars.
+ */
+
+/*
+ * Implements hook_schema().
+ */
+
+function car_module_schema() {
+    $schema['cars'] = [
+        'description' => t('It is a base table for cars'),
+        'fields' => [
+            'cid' => [
+                'description' => 'Car ID',
+                'type' => 'serial',
+                'unsigned' => TRUE,
+                'not null' => TRUE,
+            ],
+            'name' => [
+                'description' => 'Model name of machine',
+                'type' => 'varchar',
+                'length' => 255,
+                'not null' => TRUE,
+            ],
+            'power' => [
+                'description' => 'Power digit',
+                'type' => 'int',
+                'unsigned' => TRUE,
+                'not null' => TRUE,
+            ],
+            'year' => [
+                'description' => 'Year car',
+                'type' => 'int',
+                'unsigned' => TRUE,
+                'not null' => TRUE,
+            ],
+
+            'price' => [
+                'description' => 'Price amount of this car',
+                'type' => 'int',
+                'unsigned' => TRUE,
+                'not null' => TRUE,
+            ],
+        ],
+        'primary key' => ['cid'],
+    ];
+    return $schema;
+}
+
