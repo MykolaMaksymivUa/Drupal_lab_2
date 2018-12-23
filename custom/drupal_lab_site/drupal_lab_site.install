@@ -4,11 +4,6 @@
  * @file
  * Enable the modules views, views_ui and entityreference.
  */
-function drupal_lab_site_update_7004(&$sandbox) {
-  $module_list = [
-    'views',
-	'views_ui',
-	'entityreference',
-  ];
-  module_enable($module_list, TRUE);
+function drupal_lab_site_update_7001() {
+	module_enable(['views', 'views_ui', 'entityreference']);
 }
