@@ -1,0 +1,12 @@
+<?php
+
+/**
+ * @file
+ * Enable the modules some_module and some_other_module.
+ */
+function drupal_lab_site_update_7001(&$sandbox) {
+  $module_list = array(
+    'views',
+  );
+  module_enable($module_list, TRUE);
+}

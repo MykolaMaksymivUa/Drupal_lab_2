@@ -1,0 +1,4 @@
+name = Drupal site
+description = Provides an update for modules views, views_ui and entityreference
+core = 7.x
+package = Custom

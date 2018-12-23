@@ -1,0 +1,8 @@
+<?php
+
+/**
+ * @file
+ * Code for the features/content_type_Product_Review feature.
+ */
+
+include_once 'features_content_type_product_review.features.inc';
