@@ -1,0 +1,17 @@
+name = features/content_type_Product
+description = It is a feature for content type Product
+core = 7.x
+package = Features
+version = 7.x-1.0
+dependencies[] = features
+dependencies[] = features_taxonomy_category
+dependencies[] = image
+dependencies[] = taxonomy
+dependencies[] = text
+features[features_api][] = api:2
+features[field_base][] = body
+features[field_base][] = field_category
+features[field_instance][] = node-product-body
+features[field_instance][] = node-product-field_category
+features[field_instance][] = node-product-field_image
+features[node][] = product
