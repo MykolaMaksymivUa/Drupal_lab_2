@@ -2,11 +2,13 @@
 
 /**
  * @file
- * Enable the modules some_module and some_other_module.
+ * Enable the modules views, views_ui and entityreference.
  */
-function drupal_lab_site_update_7001(&$sandbox) {
-  $module_list = array(
+function drupal_lab_site_update_7004(&$sandbox) {
+  $module_list = [
     'views',
-  );
+	'views_ui',
+	'entityreference',
+  ];
   module_enable($module_list, TRUE);
 }
