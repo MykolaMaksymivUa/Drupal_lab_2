@@ -33,6 +33,10 @@ function features_views_products_views_default_views() {
   $handler->display->display_options['pager']['options']['items_per_page'] = '10';
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['row_plugin'] = 'node';
+  /* Relationship: Entity Reference: Referencing entity */
+  $handler->display->display_options['relationships']['reverse_field_product_node']['id'] = 'reverse_field_product_node';
+  $handler->display->display_options['relationships']['reverse_field_product_node']['table'] = 'node';
+  $handler->display->display_options['relationships']['reverse_field_product_node']['field'] = 'reverse_field_product_node';
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
@@ -62,6 +66,7 @@ function features_views_products_views_default_views() {
   $handler->display->display_options['fields']['field_image_review']['id'] = 'field_image_review';
   $handler->display->display_options['fields']['field_image_review']['table'] = 'field_data_field_image_review';
   $handler->display->display_options['fields']['field_image_review']['field'] = 'field_image_review';
+  $handler->display->display_options['fields']['field_image_review']['relationship'] = 'reverse_field_product_node';
   $handler->display->display_options['fields']['field_image_review']['label'] = '';
   $handler->display->display_options['fields']['field_image_review']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_image_review']['click_sort_column'] = 'fid';
@@ -73,6 +78,7 @@ function features_views_products_views_default_views() {
   $handler->display->display_options['fields']['field_product']['id'] = 'field_product';
   $handler->display->display_options['fields']['field_product']['table'] = 'field_data_field_product';
   $handler->display->display_options['fields']['field_product']['field'] = 'field_product';
+  $handler->display->display_options['fields']['field_product']['relationship'] = 'reverse_field_product_node';
   $handler->display->display_options['fields']['field_product']['label'] = '';
   $handler->display->display_options['fields']['field_product']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_product']['settings'] = array(
